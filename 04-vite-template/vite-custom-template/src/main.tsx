@@ -1,5 +1,8 @@
+/* eslint-disable react/react-in-jsx-scope */
 
+// import React from 'react'
 // 17+
+
 
 /* 
 
@@ -11,6 +14,38 @@ npm init @eslint/config@latest
 npm i -D eslint-plugin-react-hooks eslint-plugin-react-refresh
 
  */
+
+
+
+import {createRoot} from 'react-dom/client';
+import Main from './components/Main';
+
+
+
+const container = document.getElementById('app');
+
+if(container){
+  
+  // 렌더링...
+  createRoot(container).render(<Main></Main>)
+}else{
+  console.warn('문서에 #app 요소가 존재하지 않습니다.');
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
