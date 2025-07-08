@@ -8,10 +8,9 @@ interface Props {
 }
 
 
-function RenderList({reactLibrary, items}:Props) {
+function RenderList({reactLibrary/* object */, items/* array */}:Props) {
 
   /* 객체의 리스트 렌더링 */
-
 
   const renderDefinitionList = (data:ReactLibrary) => {
     const definitionItem = Object.entries(data).map(([key,value])=> (
@@ -20,13 +19,37 @@ function RenderList({reactLibrary, items}:Props) {
           <dd>{value}</dd>
         </Fragment>
     ))
-
     return <dl className="reactLibrary">{definitionItem}</dl>
 
   }
 
 
 
+
+  const demoList = [];
+
+  for(const a of items){
+    demoList.push(<li key={a.id}> {a.message} </li>)
+    /* 배열에 li태그의 값을 넣는다. */
+  }
+  
+  const _demoList = items.map(({id, message}:StatusMessageWithId)=>(
+    <li key={id}>{message}</li>
+  ))
+  
+  const renderDemoList = () => items.map(({id,message})=> <li key={id}>{message}</li>)
+
+
+
+  const _renderDemoList = () => {
+    return items.map(({id,message})=> {
+      return <li key={id}>{message}</li>
+    })
+  }
+
+
+
+  
   return (
     <> 
       <dt>리스트 렌더링(list rendering)</dt>
@@ -36,6 +59,35 @@ function RenderList({reactLibrary, items}:Props) {
         </p>
         {renderDefinitionList(reactLibrary)}
       </dd>
+      <dd>
+        <ul>
+          {
+            items.map(({id,message}:StatusMessageWithId)=> (
+              <li key={id}>{message}</li>
+            ))
+          }
+        </ul>
+        <hr />
+        <ul>
+          { demoList }
+        </ul>
+        <hr />
+        <ul>
+          { _demoList }
+        </ul>
+        <hr />
+        <ul>
+          { renderDemoList() }
+        </ul>
+      </dd>
+      <dd>
+        <p>상태 메시지(status message) 배열을 역순 정렬하여 렌더링합니다.</p>
+        {
+          items.toReversed().map((item,index)=>(
+            <li key={item.id ?? index}>{item.message}</li>
+          ))
+        }
+      </dd>
     </>
   )
 }
@@ -43,3 +95,9 @@ function RenderList({reactLibrary, items}:Props) {
 
 
 export default RenderList
+
+
+
+
+
+
