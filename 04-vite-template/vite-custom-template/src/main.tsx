@@ -17,7 +17,7 @@ npm i -D eslint-plugin-react-hooks eslint-plugin-react-refresh
 
 
 import {createRoot} from 'react-dom/client';
-import Main from './components/Main';
+import Main from '@/components/Main';
 
 
 
