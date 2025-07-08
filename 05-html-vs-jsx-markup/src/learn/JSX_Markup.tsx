@@ -1,10 +1,13 @@
+import { statusMessage } from "@/data/learn"
 import DataBinding from "./DataBinding"
+import ConditionalRendering from "./ConditionalRendering"
 
 
 function JSX_Markup() {
   return (
     <dl className="descriptionList">
-      <DataBinding />
+      <DataBinding statusMessage={statusMessage} />
+      <ConditionalRendering imageType={'react'}/>
     </dl>
   )
 }
