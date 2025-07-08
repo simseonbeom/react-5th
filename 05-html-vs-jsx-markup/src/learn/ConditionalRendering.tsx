@@ -46,7 +46,7 @@ function ConditionalRendering({ imageType }: Props) {
       return <img src="vite.svg" alt="vite logo" />
     }
   }
-  console.log( render );
+  // console.log( render );
 
 
   if(!imageType){
