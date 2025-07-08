@@ -8,6 +8,7 @@ interface Props {
   imageType: string;
 }
 
+
 function ConditionalRendering({ imageType }: Props) {
   let iconPath = "";
   let printText = "";
@@ -38,6 +39,22 @@ function ConditionalRendering({ imageType }: Props) {
   (<img src="/icons/spinner.svg" alt="로딩 중..." />):
   (<img src="vite.svg" alt="vite logo" />)
 
+  function render(){
+    if(imageType === 'vite'){
+      return <img src="/icons/spinner.svg" alt="로딩 중..." />
+    }else{
+      return <img src="vite.svg" alt="vite logo" />
+    }
+  }
+  console.log( render );
+
+
+  if(!imageType){
+
+    return <div>데이터 로딩중...</div>
+  }
+  
+
   return (
     <>
       <dt>조건부 렌더링(conditional rendering) ({tf && '스피너 표시'})</dt>
@@ -50,7 +67,6 @@ function ConditionalRendering({ imageType }: Props) {
       </dd>
       <dd>
         <p>spinner 또는 vite 이미지가 랜덤으로 화면에 렌더링 되도록 합니다.</p>
-        
         <div className="conditionalRendering"> {spinnerOrVite} </div>
       </dd>
     </>

@@ -5,4 +5,22 @@ export const statusMessage: StatusMessage[] = [
   "❌ 로딩 실패",
 ];
 
-export const imageType: ImageType = "next.js";
+export const imageType: ImageType = "kakao talk";
+
+
+export const isShowReactImage: boolean = true;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

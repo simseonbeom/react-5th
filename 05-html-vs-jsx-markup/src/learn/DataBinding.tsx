@@ -8,6 +8,7 @@ interface Props {
 }
 
 
+
 function DataBinding({statusMessage}:Props):JSX.Element {
   
   const message = statusMessage[getRandom(statusMessage.length)];
