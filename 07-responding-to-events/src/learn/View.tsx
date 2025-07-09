@@ -1,4 +1,7 @@
 import { useState } from "react"
+import EventHandlerProp from "./EventHandlerProp";
+import EventPropagation from "./EventPropagation";
+
 
 
 
@@ -12,12 +15,20 @@ export default View
 
 
 
+/* compound component */
+
 function RespondingToEvents(){
   
   const [text,setText] = useState(''); // Hook
 
-  const style = {
-    marginRight:'10px'
+  // const style = {
+  //   marginRight:'10px'
+  // }
+
+  let message = '프롱이'
+  const updateMessage = (add:string):void => {
+    message += add;
+    console.log(message);
   }
 
   return (
@@ -47,11 +58,17 @@ function RespondingToEvents(){
       <div>
         <output>{text}</output>
       </div>
+
+      <EventHandlerProp onUpdateMessage={updateMessage} />
+      <EventPropagation />
+
+
     </div>
   )
 }
 
 View.RespondingToEvents = RespondingToEvents
+
 
 
 
