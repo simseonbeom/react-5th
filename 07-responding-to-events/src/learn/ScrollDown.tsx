@@ -3,8 +3,27 @@
 
 
 
-
 function ScrollDown() {
+
+
+
+  const handleScrollDown = () => {
+    // 도착 하고자 엘리먼트를 선택하고 그 지점
+    const el = document.querySelector('.buttonGroup')!;
+    el.scrollIntoView({block:'start', behavior:'smooth'})
+  }
+
+
+  const handleScrollUp = () => {
+    const el = document.querySelector('.NavContents')!;
+    el.scrollIntoView({block:'end', behavior:'smooth'})
+  }
+
+
+  
+
+
+
   return (
     <div role="group" className="buttonGroup">
       <button 
@@ -12,6 +31,7 @@ function ScrollDown() {
       className="scrollDown"
       aria-label="스크롤 다운"
       title="스크롤 다운"
+      onClick={handleScrollDown}
       >
         <svg
           fill="currentColor"
@@ -35,6 +55,7 @@ function ScrollDown() {
       className="scrollUp"
       aria-label="스크롤 업"
       title="스크롤 업"
+      onClick={handleScrollUp}
       >
         <svg
           fill="currentColor"

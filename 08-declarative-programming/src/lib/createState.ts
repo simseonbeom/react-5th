@@ -23,7 +23,7 @@ const createState = (
       }
 
       target[prop] = newValue;
-      callback?.();
+      callback?.(); // render trigger
       return true;
     },
   });
