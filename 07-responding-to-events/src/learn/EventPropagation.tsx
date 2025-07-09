@@ -1,3 +1,4 @@
+import LayoutBox from "./LayoutBox";
 
 
 function EventPropagation() {
@@ -12,7 +13,7 @@ function EventPropagation() {
       <summary>
         <b>이벤트 전파 & 기본 동작 방지</b>
       </summary>
-      <div className="box" onClick={handleClick} style={styles.yellow}>box</div>
+      <LayoutBox onClick={handleClick} style={styles.cyan}></LayoutBox>
     </details>
   );
 }
