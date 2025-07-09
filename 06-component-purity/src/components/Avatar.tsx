@@ -1,9 +1,13 @@
 interface Props {
-  name:string;
-  status?:string;
-  size?:number
+  user:{
+    name:string;
+    status?:string;
+    size?:number
+  }
 }
-function Avatar({ name, status = "offline", size = 64 }:Props){
+
+function Avatar({user}:Props){
+  const {name, status = 'offline', size = 64} = user;
   let iconPath = "";
   let statusMessage = "";
 
@@ -29,12 +33,16 @@ function Avatar({ name, status = "offline", size = 64 }:Props){
   const label = `${name} (${statusMessage})`;
 
   return (
-    <figure className="avatar" aria-label={label} title={label}>
-      <img src={`/avatar/${name}.png`} alt={name} width={size} height={size} />
-      <figcaption>
-        <img src={iconPath} alt="" />
-      </figcaption>
-    </figure>
+    <li className="avatar">
+      <figure aria-label={label} title={label}>
+        <div className="cover">
+          <img src={`/avatar/${name}.png`} alt={name} width={size} height={size} />
+        </div>
+        <figcaption>
+          <img src={iconPath} alt="" />
+        </figcaption>
+      </figure>
+    </li>
   );
 }
 

@@ -58,7 +58,31 @@ async function fetchUser(userId:string = ''){
   }
 }
 
-fetchUser()
+// fetchUser()
+// fetchUser()
+
+/* 
+
+DOM 조작 (document.getElementById)
+브라우저 API 호출 (setTimeout, setInterval)
+로컬 스토리지 접근
+서버 요청 (fetch,xhr,axios)
+콘솔 출력 (console.log)
+상태 저장소에 쓰기/읽기 (contextAPI, Zustand, Redux, RTK)
+
+*/
+
+
+// 결론 : 리액트 컴포넌트(함수)는 순수 그자체 
+
+
+
+
+
+
+
+
+
 
 
 
