@@ -1,4 +1,11 @@
 /**@type {(data: { [key:string]: any }, callback: () => void) => [{ [key:string]: any }, (key: string, value: any) => void]} */
+
+
+
+
+
+
+
 const createState = (data, callback) => {
   let allowUpdate = false;
 
@@ -13,7 +20,7 @@ const createState = (data, callback) => {
       }
 
       target[prop] = newValue;
-      callback?.();
+      callback?.(); // render trigger
 
       return true;
     },
