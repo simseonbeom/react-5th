@@ -1,8 +1,9 @@
 import { useState } from "react"
-import { getNoteList } from "./api/getNote"
+import { getNoteList, type Note } from "./api/getNote"
 import NoteListPage from "./pages/NoteListPage"
 import { ROUTES } from "./routes";
 import NoteDetailPage from "./pages/NoteDetailPage";
+import NoteCreatePage from "./pages/NoteCreatePage";
 
 
 
@@ -29,6 +30,17 @@ function NoteApp() {
     })
   }
 
+  // 노트 생성 함수 
+  const handleCreateNote = (newNoteItem:Note) => {
+    setList([
+      ...list,
+      newNoteItem
+    ])
+  }
+  
+  
+  // 파생 상태 
+  const newNoteId = list.length + 1;
   
   switch (routeInfo.route) {
     case ROUTES.list:
@@ -36,7 +48,7 @@ function NoteApp() {
     case ROUTES.detail:
       return <NoteDetailPage noteId={routeInfo.noteId}  onChangeRoute={handleChangeRoute}/>
     case ROUTES.create:
-      return <div>create page</div>
+      return <NoteCreatePage newNoteId={newNoteId} onCreate={handleCreateNote} onChangeRoute={handleChangeRoute}/>
     case ROUTES.edit:
       return <div>edit page</div>
     default: 
