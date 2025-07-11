@@ -2,6 +2,7 @@ import { useState } from "react"
 import { getNoteList } from "./api/getNote"
 import NoteListPage from "./pages/NoteListPage"
 import { ROUTES } from "./routes";
+import NoteDetailPage from "./pages/NoteDetailPage";
 
 
 
@@ -33,7 +34,7 @@ function NoteApp() {
     case ROUTES.list:
       return <NoteListPage list={list} onChangeRoute={handleChangeRoute}/>
     case ROUTES.detail:
-      return <div>Detail page</div>
+      return <NoteDetailPage noteId={routeInfo.noteId}  onChangeRoute={handleChangeRoute}/>
     case ROUTES.create:
       return <div>create page</div>
     case ROUTES.edit:
