@@ -4,6 +4,7 @@ import NoteListPage from "./pages/NoteListPage"
 import { ROUTES } from "./routes";
 import NoteDetailPage from "./pages/NoteDetailPage";
 import NoteCreatePage from "./pages/NoteCreatePage";
+import NoteEditPage from "./pages/NoteEditPage";
 
 
 
@@ -37,6 +38,14 @@ function NoteApp() {
       newNoteItem
     ])
   }
+
+  const handleEditNote = () => {
+    
+  }
+
+  const handleDeleteNote = () => {
+
+  }
   
   
   // 파생 상태 
@@ -50,7 +59,7 @@ function NoteApp() {
     case ROUTES.create:
       return <NoteCreatePage newNoteId={newNoteId} onCreate={handleCreateNote} onChangeRoute={handleChangeRoute}/>
     case ROUTES.edit:
-      return <div>edit page</div>
+      return <NoteEditPage noteId={routeInfo.noteId} onChangeRoute={handleChangeRoute} onEdit={handleEditNote} onDelete={handleDeleteNote}/>
     default: 
       return <div>404 not found</div>
   }

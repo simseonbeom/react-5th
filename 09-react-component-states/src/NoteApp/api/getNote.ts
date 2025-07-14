@@ -23,8 +23,6 @@ export function getNoteList():Note[]{
 }
 
 
-
-
 export function getNoteItem(noteId:number):Note | null{
   const notes = getNoteList();
   const note = notes.find((note)=> note.id === noteId);

@@ -1,6 +1,6 @@
 import { useId, useState } from "react";
 import type { Note } from "../api/getNote";
-import { getUserList } from "../api/getUser";
+import { getUser, getUserList } from "../api/getUser";
 import './NoteForm.css'
 
 
@@ -13,7 +13,7 @@ interface Props {
 
 const userList = getUserList();
 
-type Form = React.FormEvent<HTMLInputElement|HTMLTextAreaElement|HTMLSelectElement>
+type Form = React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement|HTMLSelectElement>
 
 function NoteForm({ mode, newNoteId, onCreate, onBackLink }: Props) {
 
@@ -37,22 +37,51 @@ function NoteForm({ mode, newNoteId, onCreate, onBackLink }: Props) {
       ...formData,
       [name]:value
     }
-
     setFormData(nextFormData);
-
-    console.log( formData );
-    
   }
-  const handleCreateNote = () => {};
+
+
+  const handleCreateNote = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    const { title, content, userId } = formData;
+
+    const newUserId = Number(userId);
+    
+    const user = getUser(newUserId);
+    
+    // note 객체 만들기 expand: user
+    // onCreate() <- 전달
+
+    if(!user) return;
+    if(!newNoteId) return;
+    
+    const newNote = {
+      id: newNoteId,
+      title: title.trim(),
+      content: content,
+      userId: newUserId,
+      createdAt:'',
+      updatedAt:'',
+      expand:{
+        user: user
+      }
+    }
+
+    onCreate(newNote)
+    onBackLink();
+    
+  };
 
   return (
-    <form className="NoteForm">
+    <form className="NoteForm" onSubmit={handleCreateNote}>
       <div className="formControl">
         <label htmlFor={titleId}>제목</label>
         <input
           id={titleId}
           type="text"
           name="title"
+          value={formData.title}
           onChange={handleUpdateFormData}
         />
       </div>
@@ -61,6 +90,7 @@ function NoteForm({ mode, newNoteId, onCreate, onBackLink }: Props) {
         <textarea
           id={contentId}
           name="content"
+          value={formData.content}
           onChange={handleUpdateFormData}
         />
       </div>
@@ -69,6 +99,7 @@ function NoteForm({ mode, newNoteId, onCreate, onBackLink }: Props) {
         <select
           id={userId}
           name="userId"
+          value={formData.userId}
           onChange={handleUpdateFormData}
         >
         <option>작성자 선택</option>
