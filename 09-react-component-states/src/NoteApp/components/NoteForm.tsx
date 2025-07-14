@@ -11,8 +11,8 @@ interface Props {
   note?:Note;
   onCreate?: (newNoteItem: Note) => void;
   onBackLink: () => void;
-  onDelete?:()=> void;
-  onEdit?:()=> void;
+  onDelete?:(willDeleteNoteId:number)=> void;
+  onEdit?:(willEditNote:Note)=> void;
 }
 
 const userList = getUserList();
@@ -95,14 +95,20 @@ function NoteForm({ mode, newNoteId, onCreate, onBackLink, note, onEdit, onDelet
   const handleEdit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log('edit');
-    onEdit?.()
-    
+    if(note && onEdit){
+      const willEditNote = {
+        ...note,
+        ...formData
+      }
+      onEdit(willEditNote)
+      onBackLink()
+    }
   }
 
   const handleDelete = () => {
-    console.log('delete');
-    onDelete?.()
+    if(!note) return;
+    onDelete?.(note.id)
+    onBackLink()
   }
 
   

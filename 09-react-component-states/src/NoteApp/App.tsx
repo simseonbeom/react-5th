@@ -22,6 +22,7 @@ function NoteApp() {
   const [list, setList] = useState(()=> getNoteList())
   
 
+  // 라우트 변경 함수
   const handleChangeRoute = (nextRoute:string,pickNoteId:number = 0) => {
 
     setRouteInfo({
@@ -39,12 +40,18 @@ function NoteApp() {
     ])
   }
 
-  const handleEditNote = () => {
-    
+  // 노트 수정 함수
+  const handleEditNote = (willEditNote:Note) => {
+    const nextList = list.map((item)=>
+      item.id === willEditNote.id ? willEditNote : item
+    )
+    setList(nextList);
   }
 
-  const handleDeleteNote = () => {
-    
+  // 노트 제거 함수
+  const handleDeleteNote = (willEditNoteId:number) => {
+    const nextList = list.filter((item)=> item.id !== willEditNoteId);
+    setList(nextList);
   }
   
   
