@@ -44,7 +44,7 @@ function NoteApp() {
   }
 
   const handleDeleteNote = () => {
-
+    
   }
   
   

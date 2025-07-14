@@ -2,28 +2,47 @@ import { useId, useState } from "react";
 import type { Note } from "../api/getNote";
 import { getUser, getUserList } from "../api/getUser";
 import './NoteForm.css'
+import { convertHTMLToText, convertTextToHTMLString } from "@/utils/convertHTMLToText";
 
 
 interface Props {
-  mode: string;
-  newNoteId: number;
-  onCreate: (newNoteItem: Note) => void;
+  mode: 'create' | 'edit';
+  newNoteId?: number;
+  note?:Note;
+  onCreate?: (newNoteItem: Note) => void;
   onBackLink: () => void;
+  onDelete?:()=> void;
+  onEdit?:()=> void;
 }
 
 const userList = getUserList();
 
 type Form = React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement|HTMLSelectElement>
 
-function NoteForm({ mode, newNoteId, onCreate, onBackLink }: Props) {
+interface FormData {
+  title:string;
+  content:string;
+  userId:number;
+}
+
+function NoteForm({ mode, newNoteId, onCreate, onBackLink, note, onEdit, onDelete }: Props) {
 
   
-  const [formData, setFormData] = useState(() => {
+  const [formData, setFormData] = useState<FormData>(() => {
+
+    if(mode === 'edit' && note){
+      return {
+        title:note.title,
+        content:convertHTMLToText(note.content),
+        userId:note.userId
+      }
+    }
     return {
       title: "",
       content: "",
       userId: 0,
     };
+
   });
 
   const titleId = useId();
@@ -59,7 +78,7 @@ function NoteForm({ mode, newNoteId, onCreate, onBackLink }: Props) {
     const newNote = {
       id: newNoteId,
       title: title.trim(),
-      content: content,
+      content: convertTextToHTMLString(content),
       userId: newUserId,
       createdAt:'',
       updatedAt:'',
@@ -68,13 +87,29 @@ function NoteForm({ mode, newNoteId, onCreate, onBackLink }: Props) {
       }
     }
 
-    onCreate(newNote)
+    onCreate?.(newNote)
     onBackLink();
     
   };
 
+  const handleEdit = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    console.log('edit');
+    onEdit?.()
+    
+  }
+
+  const handleDelete = () => {
+    console.log('delete');
+    onDelete?.()
+  }
+
+  
+  const isCreateMode = mode.includes('create');
+
   return (
-    <form className="NoteForm" onSubmit={handleCreateNote}>
+    <form className="NoteForm" onSubmit={isCreateMode ? handleCreateNote : handleEdit}>
       <div className="formControl">
         <label htmlFor={titleId}>제목</label>
         <input
@@ -112,8 +147,12 @@ function NoteForm({ mode, newNoteId, onCreate, onBackLink }: Props) {
       </div>
 
       <div className="buttonGroup">
-        <button type="submit">추가</button>
-        <button type="reset">초기화</button>
+        <button type="submit"> {isCreateMode ? '추가' : '수정'} </button>
+        {
+          isCreateMode ? 
+          (<button type="reset">초기화</button>) :
+          (<button type="button" onClick={handleDelete}>삭제</button>)
+        }
       </div>
 
 
