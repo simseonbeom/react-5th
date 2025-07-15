@@ -6,7 +6,10 @@ import NavLink from '../NavLink';
 
 function Header() {
 
+  
+  // if(isAuth){
 
+  // }
 
   return (
     <header className={S.header}>

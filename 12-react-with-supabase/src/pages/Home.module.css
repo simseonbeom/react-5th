@@ -13,6 +13,29 @@
     left: 50%;
     top: 50%;
     translate:-50% -50%;
+    z-index: 100;
+    text-align: right;
+    font-weight: 200;
+
+    h2{
+      font-size: 40px;
+      font-weight: 100;
+      margin-bottom: 0.3rem;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.644);
+      
+      strong{
+        font-weight: 800;
+      }
+    }
+
+    span{
+      font-size: 26px;
+      display: inline-block;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.644);
+
+    }
   }
 
   video{
@@ -22,3 +45,19 @@
     display: block;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

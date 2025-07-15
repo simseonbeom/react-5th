@@ -1,4 +1,5 @@
 import Home from "@/pages/Home";
+import Login from "@/pages/Login";
 
 
 
@@ -23,7 +24,7 @@ export const routes = [
   {
     title:'로그인',
     path:'/Login',
-    element: <div>Login page</div>
+    element: <Login />
   },
 
 ]
