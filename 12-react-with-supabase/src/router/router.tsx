@@ -26,6 +26,11 @@ export const routes = [
     path:'/Login',
     element: <Login />
   },
+  {
+    title:'회원가입',
+    path:'/Register',
+    element: <div>REGISTER</div>
+  },
 
 ]
 
