@@ -27,7 +27,7 @@ function Home() {
         <span>everything</span>
       </div>
 
-      <video src="/visual.mp4" autoPlay muted loop playsInline></video>
+      <video src="/visual.mp4" muted loop playsInline></video>
     </div>
   )
 }

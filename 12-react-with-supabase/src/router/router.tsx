@@ -1,5 +1,6 @@
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
+import Register from "@/pages/Register";
 
 
 
@@ -29,7 +30,7 @@ export const routes = [
   {
     title:'회원가입',
     path:'/Register',
-    element: <div>REGISTER</div>
+    element: <Register />
   },
 
 ]

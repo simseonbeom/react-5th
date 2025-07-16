@@ -84,10 +84,23 @@ function Login() {
             error && <p style={{paddingTop:'1rem',color:'red'}}>{error}</p>
           }
           <hr />
-          <a href="">아직도 2.9cm 회원이 아니세요?</a>
+          <a 
+            href="#"
+            onClick={(e)=>{
+              e.preventDefault();
+              history.pushState(null,'','/Register');
+              setHistoryRoute('/Register');
+            }}
+          >아직도 2.9cm 회원이 아니세요?</a>
         </form>
       </div>
     </div>
   )
 }
 export default Login
+
+
+
+
+
+
