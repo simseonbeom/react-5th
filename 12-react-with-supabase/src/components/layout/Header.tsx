@@ -16,6 +16,15 @@ function Header() {
   })
 
 
+
+  /* 
+    
+  getAvatarUrl(user.id)을 사용해서 화면에 이미지를 렌더링
+  */
+
+  
+
+
   return (
     <header className={S.header}>
       <h1>2.9cm</h1>
