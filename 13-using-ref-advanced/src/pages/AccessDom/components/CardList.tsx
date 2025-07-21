@@ -3,17 +3,19 @@ import CardItem from "./CardItem"
 
 
 interface Props {
-  list: Movie_list[]
+  list: Movie_list[];
+  usingPopup:boolean;
+
 }
 
 
-function CardList({list}:Props) {
+function CardList({list, usingPopup}:Props) {
   return (
     <ul>
       {
         list.map((item)=>(
           <li key={item.id}>
-            <CardItem item={item} />
+            <CardItem item={item} popup={usingPopup}/>
           </li>
         ))
       }
