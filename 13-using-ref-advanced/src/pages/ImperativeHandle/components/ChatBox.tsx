@@ -1,4 +1,4 @@
-import { useId, useImperativeHandle, useRef, type RefObject } from "react";
+import { useId, useImperativeHandle, useRef, useState, type RefObject } from "react";
 import type { Chat } from ".."
 import S from '../style.module.css'
 
@@ -15,6 +15,10 @@ function ChatBox({ message, onAddMessage, ref }: Props) {
   const id = useId();
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const olRef = useRef<HTMLOListElement | null>(null);
+
+  // IME(Input Method Editor) 입력기에서 문자가 조합될 때 발생 현상 
+  const [isComposing,setIsComposing] = useState(false);
+  
 
   useImperativeHandle(ref,()=> ({
     scrollDownList : () => {
@@ -66,7 +70,7 @@ function ChatBox({ message, onAddMessage, ref }: Props) {
   const handleKeyDown = (e:React.KeyboardEvent<HTMLTextAreaElement>) => {
     const { key, shiftKey } = e;
 
-    if(key === 'Enter' && !shiftKey){
+    if(key === 'Enter' && !shiftKey && !isComposing){
       e.preventDefault();
       
       const newMessage = e.currentTarget.value.trim();
@@ -97,6 +101,8 @@ function ChatBox({ message, onAddMessage, ref }: Props) {
         <div className={S.messageBox}>
           <label htmlFor={id} className="a11y-hidden">메시지 입력</label>
           <textarea 
+            onCompositionStart={()=> setIsComposing(true)}
+            onCompositionEnd={()=> setIsComposing(false)}
             onKeyDown={handleKeyDown}
             ref={textareaRef}
             name="message" 

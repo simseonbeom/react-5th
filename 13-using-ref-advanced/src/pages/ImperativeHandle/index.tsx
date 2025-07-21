@@ -37,7 +37,6 @@ function ImperativeHandle() {
       isMe:true,
       message
     }
-
     setChatMessage((message)=> [...message, newMessage])
   }
 
@@ -47,7 +46,7 @@ function ImperativeHandle() {
     imperativeHandles.scrollDownList();
   }
 
-  
+
   return (
     <main className={S.container} ref={mountedMainElement}>
       <h1>상위 컴포넌트에 명령형 핸들 노출하기</h1>
