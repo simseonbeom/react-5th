@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import S from './style.module.css'
-import ChatBox from './components/ChatBox';
+import ChatBox, { type ChatBoxHandle } from './components/ChatBox';
 
 
 
@@ -24,6 +24,9 @@ function ImperativeHandle() {
 
   const [chatMessage, setChatMessage] = useState<Chat>(INITIAL_CHAT_MESSAGE);
 
+  // 하위 컴포넌트의 명령형 핸들에 접근 가능한 객체를 참조
+  const imperativeHandleRef = useRef<ChatBoxHandle>(null);
+
   // [상태 업데이트] 채팅 메시지 목록에 새 메시지 추가 기능
   const handleAddMessage = (message:string) => {
     
@@ -38,8 +41,15 @@ function ImperativeHandle() {
     setChatMessage((message)=> [...message, newMessage])
   }
 
+  const mountedMainElement = () => {
+    const imperativeHandles = imperativeHandleRef.current;
+    if(!imperativeHandles) return;
+    imperativeHandles.scrollDownList();
+  }
+
+  
   return (
-    <main className={S.container}>
+    <main className={S.container} ref={mountedMainElement}>
       <h1>상위 컴포넌트에 명령형 핸들 노출하기</h1>
       <div className={S.description}>
         <p>
@@ -68,6 +78,7 @@ function ImperativeHandle() {
         </p>
       </div>
       <ChatBox
+        ref={imperativeHandleRef}
         message={chatMessage}
         onAddMessage={handleAddMessage}
       />
