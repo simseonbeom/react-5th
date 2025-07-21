@@ -39,6 +39,7 @@
   justify-content: center;
   align-items: flex-end;
   perspective: 2500px;
+  /* transform-style: preserve-3d; */
 
   p{
     position: absolute;
@@ -49,6 +50,8 @@
     padding: 0.3rem;
     font-weight: bold;
     white-space: nowrap;
+    opacity: 0;
+    transition: opacity .4s;
   }
 }
 
