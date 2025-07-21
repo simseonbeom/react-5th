@@ -8,6 +8,20 @@ type Props = {
 }
 function ChatBox({message,onAddMessage}: Props) {
   const id = useId();
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
+
+  // 메시지 보내기 함수  => submit (click, key enter)
+  const sendMessage = (newMessage:string) => {
+    const textarea = textareaRef.current;
+    
+    if(!textarea) return;
+
+    onAddMessage(newMessage)
+    
+  }
+
+
 
   return (
     <section className={S.chatBox}>
@@ -28,6 +42,7 @@ function ChatBox({message,onAddMessage}: Props) {
         <div className={S.messageBox}>
           <label htmlFor={id} className="a11y-hidden">메시지 입력</label>
           <textarea 
+            ref={textareaRef}
             name="message" 
             id={id}
           ></textarea>
