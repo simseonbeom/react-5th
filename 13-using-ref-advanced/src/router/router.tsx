@@ -1,5 +1,6 @@
 import AccessDom from "@/pages/AccessDom";
 import Home from "@/pages/Home/Home";
+import ImperativeHandle from "@/pages/ImperativeHandle";
 import Remember from "@/pages/Remember";
 
 
@@ -21,6 +22,11 @@ export const routes = [
     title:'DOM 노드 접근 / 조작',
     path:'/access-dom',
     element: <AccessDom />
+  },
+  {
+    title:'명령형 핸들 노출',
+    path:'/imperativeHandle',
+    element: <ImperativeHandle />
   },
 
 ]
