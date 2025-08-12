@@ -20,18 +20,39 @@ const b = Root
 */
 
 
-import Root from "@/pages";
-import About from "@/pages/About";
-import AuthLayout from "@/pages/Auth/AuthLayout";
-import Login from "@/pages/Auth/Login";
-import Register from "@/pages/Auth/Register";
-import RequireAuth from "@/pages/Auth/RequireAuth";
-import City from "@/pages/Concerts/City";
-import ConcertsHome from "@/pages/Concerts/ConcertsHome";
-import Trending from "@/pages/Concerts/Trending";
-import Home from "@/pages/Home";
-import NotFound from "@/pages/NotFound";
+// import Root from "@/pages";
+// import Home from "@/pages/Home";
+// import About from "@/pages/About";
+// import AuthLayout from "@/pages/Auth/AuthLayout";
+// import Login from "@/pages/Auth/Login";
+// import Register from "@/pages/Auth/Register";
+// import RequireAuth from "@/pages/Auth/RequireAuth";
+// import City from "@/pages/Concerts/City";
+// import ConcertsHome from "@/pages/Concerts/ConcertsHome";
+// import Trending from "@/pages/Concerts/Trending";
+// import NotFound from "@/pages/NotFound";
+import { lazy } from "react";
 import { createBrowserRouter, Outlet } from "react-router";
+
+
+
+const Root = lazy(()=> import('@/pages'));
+const Home = lazy(()=> import('@/pages/Home'));
+const About = lazy(()=> import('@/pages/About'));
+
+
+const AuthLayout = lazy(()=> import('@/pages/Auth/AuthLayout'));
+const Login = lazy(()=> import('@/pages/Auth/Login.tsx'));
+const Register = lazy(()=> import('@/pages/Auth/Register.tsx'));
+const RequireAuth = lazy(()=> import('@/pages/Auth/RequireAuth.tsx'));
+
+
+const ConcertsHome = lazy(()=> import('@/pages/Concerts/ConcertsHome.tsx'));
+const Trending = lazy(()=> import('@/pages/Concerts/Trending.tsx'));
+const City = lazy(()=> import('@/pages/Concerts/City.tsx'));
+
+
+const NotFound = lazy(()=> import('@/pages/NotFound'));
 
 
 
@@ -41,16 +62,16 @@ export const routes = createBrowserRouter([
     path:'/',
     Component: Root,
     children:[
-      { index:true, Component: Home },
-      { path:'about', Component: About },
+      { index:true, Component: Home, handle:{ label:'Home', showInNav:true }},
+      { path:'about', Component: About, handle:{ label:'About', showInNav:true } },
 
       /* auth routes */
       {
         path:'auth',
         Component: AuthLayout,
         children:[
-          { path:'login', Component: Login },
-          { path:'register', Component: Register },
+          { path:'login', Component: Login, handle:{ label:'Login', showInNav:true } },
+          { path:'register', Component: Register, handle:{ label:'Register', showInNav:true } },
         ]
       },
 
@@ -63,9 +84,9 @@ export const routes = createBrowserRouter([
           </RequireAuth>  
         ),
         children:[
-          { index:true, Component:ConcertsHome },
-          { path:':city', Component:City },
-          { path:'trending', Component:Trending },
+          { index:true, Component:ConcertsHome, handle:{ label:'Concerts', showInNav:true }},
+          { path:':city', Component:City},
+          { path:'trending', Component:Trending, handle:{ label:'Trending', showInNav:true } },
         ]
       }
     ]

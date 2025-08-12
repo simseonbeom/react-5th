@@ -1,14 +1,6 @@
+import { routes } from "@/router/routes"
+import extractNavItems from "@/utils/extractNavItems"
 import { NavLink } from "react-router"
-
-
-const navList = [
-  {to:'/',label:'Home'},
-  {to:'about',label:'About'},
-  {to:'auth/login',label:'Login'},
-  {to:'auth/register',label:'Register'},
-  {to:'concerts',label:'Concerts'},
-  {to:'concerts/trending',label:'Trending'},
-]
 
 
 function GlobalNav() {
@@ -18,14 +10,16 @@ function GlobalNav() {
     gap:'1rem',
     listStyle:'none'
   }
+
+  const navList = extractNavItems(routes.routes);
   
   return (
     <nav>
       <ul style={S}>
         {
-          navList.map(({to,label})=>(
-            <li key={to}>
-              <NavLink style={({isActive}) => ({color:isActive ? 'blue' : 'black'})} to={to}>{label}</NavLink>
+          navList.map(({path,label})=>(
+            <li key={path}>
+              <NavLink style={({isActive}) => ({color:isActive ? 'blue' : 'black'})} to={path}>{label}</NavLink>
             </li>
           ))
         }
