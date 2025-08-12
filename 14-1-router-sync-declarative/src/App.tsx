@@ -6,28 +6,39 @@ import Register from "./pages/Auth/Register"
 import NotFound from "./pages/NotFound"
 import ConcertsHome from "./pages/Concerts/ConcertsHome"
 import Trending from "./pages/Concerts/Trending"
+import AuthLayout from "./pages/Auth/AuthLayout"
+import Root from "./pages"
+import City from "./pages/Concerts/City"
+
 
 function App() {
   return (
     <div style={{display:'flex'}}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="about" element={<About/>} />
-          
-          {/* auth route */}
-          <Route path="auth" element={<h1>auth main page</h1>}>
-            <Route path="login" element={<Login/>} />
-            <Route path="register" element={<Register/>} />
-          </Route>
-          
 
-          {/* concerts route */}
-          <Route path="concerts" element={<ConcertsHome/>} />
-          <Route path="trending" element={<Trending/>} />
-          
+          <Route path="/" element={<Root/>}>
+            <Route index element={<Home/>} />
+            <Route path="about" element={<About/>} />
+            
+            {/* auth route  ...prefix('auth') */}
+            <Route path="auth" element={<AuthLayout/>}>
+              <Route path="login" element={<Login/>} />
+              <Route path="register" element={<Register/>} />
+            </Route>
+            
+
+            {/* concerts route */}
+            <Route path="concerts">
+              <Route index element={<ConcertsHome/>} />
+              <Route path=":city" element={<City/>} />
+              <Route path="trending" element={<Trending/>} />
+            </Route>
+          </Route>
+
 
           <Route path="*" element={<NotFound/>} />
+
         </Routes>
       </BrowserRouter>
     </div>
