@@ -31,6 +31,7 @@ const b = Root
 // import ConcertsHome from "@/pages/Concerts/ConcertsHome";
 // import Trending from "@/pages/Concerts/Trending";
 // import NotFound from "@/pages/NotFound";
+import { loader as trendingLoader } from "@/pages/Concerts/Trending.tsx";
 import { lazy } from "react";
 import { createBrowserRouter, Outlet } from "react-router";
 
@@ -53,6 +54,8 @@ const City = lazy(()=> import('@/pages/Concerts/City.tsx'));
 
 
 const NotFound = lazy(()=> import('@/pages/NotFound'));
+
+
 
 
 
@@ -91,10 +94,11 @@ export const routes = createBrowserRouter([
             Component:Trending, 
             HydrateFallback: () => <div>데이터 로딩 중....</div>,
             handle:{ label:'Trending', showInNav:true },
-            loader: async () => {
-              const res = await fetch('https://jsonplaceholder.typicode.com/users');
-              return res.json();
-            }
+            loader: trendingLoader
+            // loader: async () => {
+            //   const res = await fetch('https://jsonplaceholder.typicode.com/users');
+            //   return res.json();
+            // }
           },
         ]
       }
