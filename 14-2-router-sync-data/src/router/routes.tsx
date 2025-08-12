@@ -86,7 +86,16 @@ export const routes = createBrowserRouter([
         children:[
           { index:true, Component:ConcertsHome, handle:{ label:'Concerts', showInNav:true }},
           { path:':city', Component:City},
-          { path:'trending', Component:Trending, handle:{ label:'Trending', showInNav:true } },
+          { 
+            path:'trending', 
+            Component:Trending, 
+            HydrateFallback: () => <div>데이터 로딩 중....</div>,
+            handle:{ label:'Trending', showInNav:true },
+            loader: async () => {
+              const res = await fetch('https://jsonplaceholder.typicode.com/users');
+              return res.json();
+            }
+          },
         ]
       }
     ]
