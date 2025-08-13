@@ -1,8 +1,25 @@
 import { useId } from "react";
 import { Form } from "react-router";
 
-function NewUser() {
+// @ts-ignore
+import type {Route} from './+types/users/newUser.tsx';
 
+
+export const meta = () => ([
+  {title:'new | user generator'}
+])
+
+export async function clientAction({request}:Route.ClientActionArgs) {
+  const formData = await request.formData();  
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
+
+  console.log(name, email);
+}
+
+
+function NewUser() {
+  
   const nameId = useId();
   const emailId = useId();
 

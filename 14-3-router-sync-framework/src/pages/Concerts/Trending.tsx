@@ -16,21 +16,16 @@ export async function clientLoader(){
 }
 
 
-function Trending() {
+function Component({loaderData}:{loaderData:User[]}) {
 
-  const users = useLoaderData() as User[];
+  // const users = useLoaderData() as User[];
+  const users = loaderData;
+  const fetcher = useFetcher();
 
-  console.log(users);
-  
-  // const fetcher = useFetcher();
-
-  // loader 재사용 
-
+// loader 재사용 
   const handleClick = (userId:number) => {
-    // fetcher.load(`/users/${userId}`)
+    fetcher.load(`/users/${userId}`)
   }
-
-
 
   return (
     <div>
@@ -42,10 +37,8 @@ function Trending() {
           </li>
         ))
       }
-
       <hr />
-
-      {/* {
+      {
         fetcher.data?.user && (
           <Suspense fallback={<p>로딩 중...</p>}>
             <Await resolve={fetcher.data.user}>
@@ -59,11 +52,11 @@ function Trending() {
             </Await>
           </Suspense>
         )
-      } */}
+      }
     </div>
   )
 }
-export default Trending
+export default Component
 
 
 

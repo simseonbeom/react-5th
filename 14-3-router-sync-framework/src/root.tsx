@@ -1,6 +1,12 @@
-import { Links, Meta, Outlet, Scripts } from "react-router";
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import GlobalNav from "./components/GlobalNav";
 
+
+
+
+export function HydrateFallback(){
+  return <div style={{padding:16}}>앱 로딩 중...</div>
+}
 
 
 export function Layout({ children } : { children:React.ReactNode }){
@@ -18,6 +24,7 @@ export function Layout({ children } : { children:React.ReactNode }){
       </head>
       <body>
         {children}
+        <ScrollRestoration />
         <Scripts />
       </body>
     </html>

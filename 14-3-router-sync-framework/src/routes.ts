@@ -31,7 +31,7 @@ export default [
 
   /* users */
   ...prefix('users',[
-    // route(':userId','./pages/User/UserDetail.tsx'),
+    route(':userId','./pages/User/UserDetail.tsx'),
     route('new','./pages/User/NewUser.tsx'),
   ])
 ] satisfies RouteConfig
