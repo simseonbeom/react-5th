@@ -1,0 +1,48 @@
+/* @import "tailwindcss";  */
+
+/* theme, base, utilities */
+
+
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css' layer(utilities);
+/* @import '@/styles/test.css' layer(tiger); */
+
+
+/* 
+theme 디자인 시스템 (디자인 토큰)
+프로젝트 전반에 사용될 디자인 토큰(색상, 간격, 그라데이션, 브레이크 포인트) CSS 커스텀 프로퍼티로 한번에 선언
+
+*/
+
+@theme{
+
+}
+
+
+/* 
+base  reset.css
+base에서 정의한 값은 utilities 값보다 약하므로 덮어쓰기 됨. 
+
+*/
+
+@layer base{
+
+}
+
+
+
+/* 
+utilities - Tailwind V4의 기능 - 단일 목적의 유틸리티를 정의하는 문법
+*/
+
+
+@utility{
+
+}
+
+
+
+
