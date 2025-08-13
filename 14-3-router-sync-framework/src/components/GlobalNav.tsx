@@ -1,30 +1,33 @@
-import { routes } from "@/router/routes"
-import extractNavItems from "@/utils/extractNavItems"
+import { NAV } from "@/utils/nav-config"
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router"
 
 
 function GlobalNav() {
 
-  const S = {
-    display:'flex',
-    gap:'1rem',
-    listStyle:'none'
-  }
+  // const navList = extractNavItems(routes.routes);
+  
+  const [mounted, setMounted] = useState(false);
 
-  const navList = extractNavItems(routes.routes);
+  useEffect(()=>{
+    if(mounted) {
+      // ....
+      // localStorage.getItem()
+    }
+  })
+  
+  
   
   return (
-    <nav>
-      <ul style={S}>
+    <header style={{ padding:8, borderBottom: '1px solid #eee'}}>
+      <nav style={{display:'flex', gap:12}}>
         {
-          navList.map(({path,label})=>(
-            <li key={path}>
-              <NavLink style={({isActive}) => ({color:isActive ? 'blue' : 'black'})} to={path}>{label}</NavLink>
-            </li>
+          NAV.map(({to,label})=>(
+            <NavLink key={to} to={to}>{label}</NavLink>
           ))
         }
-      </ul>
-    </nav>
+      </nav>
+    </header>
   )
 }
 export default GlobalNav

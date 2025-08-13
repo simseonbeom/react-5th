@@ -30,6 +30,9 @@ type Pages = {
       "city": string;
     };
   };
+  "/concerts/trending": {
+    params: {};
+  };
   "/users/new": {
     params: {};
   };
@@ -38,7 +41,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/about" | "/auth/login" | "/auth/register" | "/concerts" | "/concerts/:city" | "/users/new";
+    page: "/" | "/about" | "/auth/login" | "/auth/register" | "/concerts" | "/concerts/:city" | "/concerts/trending" | "/users/new";
   };
   "./pages/Home/index.tsx": {
     id: "pages/Home/index";
@@ -67,6 +70,10 @@ type RouteFiles = {
   "./pages/Concerts/City.tsx": {
     id: "pages/Concerts/City";
     page: "/concerts/:city";
+  };
+  "./pages/Concerts/Trending.tsx": {
+    id: "pages/Concerts/Trending";
+    page: "/concerts/trending";
   };
   "./pages/User/NewUser.tsx": {
     id: "pages/User/NewUser";

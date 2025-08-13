@@ -26,7 +26,7 @@ export default [
   ...prefix('concerts',[
     index('./pages/Concerts/ConcertsHome.tsx'),
     route(':city','./pages/Concerts/City.tsx'),
-    // route('concerts/trending','./pages/Concerts/Trending.tsx')
+    route('trending','./pages/Concerts/Trending.tsx')
   ]),
 
   /* users */
