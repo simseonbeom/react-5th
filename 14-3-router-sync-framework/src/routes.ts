@@ -23,12 +23,11 @@ export default [
   ]),
 
   /* concerts */
-  ...prefix('concerts',[
-    index('./pages/Concerts/ConcertsHome.tsx'),
-    route(':city','./pages/Concerts/City.tsx'),
-    route('trending','./pages/Concerts/Trending.tsx')
+  route("concerts", './pages/Concerts/ConcertsLayout.tsx' ,[
+    index("./pages/Concerts/ConcertsHome.tsx"),
+    route(":city", "./pages/Concerts/City.tsx"),
+    route("trending", "./pages/Concerts/Trending.tsx"), // 아래 모듈
   ]),
-
   /* users */
   ...prefix('users',[
     route(':userId','./pages/User/UserDetail.tsx'),

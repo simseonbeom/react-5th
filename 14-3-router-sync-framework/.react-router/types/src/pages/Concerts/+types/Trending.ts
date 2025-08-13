@@ -13,6 +13,9 @@ type Matches = [{
   id: "root";
   module: typeof import("../../../root.js");
 }, {
+  id: "pages/Concerts/ConcertsLayout";
+  module: typeof import("../ConcertsLayout.js");
+}, {
   id: "pages/Concerts/Trending";
   module: typeof import("../Trending.js");
 }];

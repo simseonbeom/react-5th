@@ -30,7 +30,7 @@ function Component() {
 
     <>
       <h1>Main Page</h1>   
-      <div>
+      <div style={{height:'200vh'}}>
         <img src="/vite.svg" alt="vite logo" />
       </div>
     </>
