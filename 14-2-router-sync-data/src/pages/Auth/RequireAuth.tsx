@@ -13,6 +13,7 @@ function RequireAuth({children}:{children:React.ReactNode}) {
   const navigate = useNavigate();
 
 
+// history.pushState({state:'a'},null,'auth/login')
   
   useEffect(()=>{
     if(!isAuth){

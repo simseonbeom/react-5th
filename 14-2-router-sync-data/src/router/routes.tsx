@@ -100,6 +100,14 @@ export const routes = createBrowserRouter([
               const res = await fetch('https://jsonplaceholder.typicode.com/users');
               return res.json();
             }
+            // lazy: async() => {
+            //   const mod = await import('@/pages/Concerts/Trending');
+
+            //   return {
+            //     Component: mod.default, // default export 컴포넌트 
+            //     loader: mod.loader     // named export loader
+            //   }
+            // }
           },
         ]
       },
