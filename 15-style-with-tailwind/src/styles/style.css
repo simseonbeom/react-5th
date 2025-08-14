@@ -11,14 +11,18 @@
 /* @import '@/styles/test.css' layer(tiger); */
 
 
+
 /* 
 theme 디자인 시스템 (디자인 토큰)
 프로젝트 전반에 사용될 디자인 토큰(색상, 간격, 그라데이션, 브레이크 포인트) CSS 커스텀 프로퍼티로 한번에 선언
-
 */
 
 @theme{
-
+  --color-mint-500: oklch(0.72 0.11 178);
+  --breakpoint-sm: 500px;
+  --spacing-sm: 1rem;
+  --spacing-m: 2rem;
+  --spacing-l: 3rem;
 }
 
 
@@ -30,6 +34,21 @@ base에서 정의한 값은 utilities 값보다 약하므로 덮어쓰기 됨.
 
 @layer base{
 
+  a{
+    color: var(--color-blue-500);
+    text-decoration: underline;
+  }
+
+  h1{
+    font-size: var(--text-2xl);
+  }
+  h2{
+    font-size: var(--text-xl);
+  }
+  h3{
+    font-size: var(--text-lg);
+  }
+
 }
 
 
@@ -39,9 +58,10 @@ utilities - Tailwind V4의 기능 - 단일 목적의 유틸리티를 정의하�
 */
 
 
-@utility{
+/* @utility asdasd{
 
-}
+} */
+
 
 
 
