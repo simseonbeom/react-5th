@@ -1,5 +1,8 @@
 
 // import Playground from './components/Playground'
+import Button_clsx from './components/Button_clsx'
+import Button_cva from './components/Button_cva'
+import Button_tw from './components/Button_tw'
 import Button_twMerge from './components/Button_twMerge'
 import ChatCard from './components/ChatCard'
 import Profile from './components/Profile'
@@ -28,12 +31,25 @@ function App() {
 
       <hr className='my-5'/>
 
-      <Button_twMerge className="bg-red-500">Call To Action</Button_twMerge>
+      <Button_twMerge type="primary" className="bg-red-500">Call To Action</Button_twMerge>
 
+      <hr className='my-5'/>
 
+      <Button_clsx size='sm' className="bg-orange-400">Call To Action</Button_clsx> 
+
+      <hr className='my-5'/>
+
+      <Button_tw size='lg' disabled className="bg-emerald-500">Call To Action</Button_tw>
+
+      <hr className='my-5'/>
+
+      <Button_cva intent="primary" className=''>Call To Action</Button_cva>
+
+     
     </div>
   )
 }
+
 export default App
 
 
