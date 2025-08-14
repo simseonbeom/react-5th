@@ -1,5 +1,6 @@
 
 
+import tw from '@/utils/tw';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 
@@ -23,26 +24,43 @@ const buttonVariants = cva(
         false: ''
       },
     },
+    defaultVariants:{
+      intent: 'primary',
+      size:'md',
+      block:false
+    },
+    compoundVariants:[
+      // 특정 조건에만 추가되는 클래스 
+      { intent:'secondary', size:'lg', class: 'border border-slate-300'},
+
+      // intent가 secondary or ghost이면서 size가 lg일 때 해당 클래스 추가 
+      { intent:['secondary','ghost'], size:'lg', class: 'border border-slate-300'},
+    ]
   }
 )
 
 
-// interface Props {
-//   children: React.ReactNode;
-//   disabled?: boolean;
-//   className?:string;
-// }
-
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & 
-  VariantProps<typeof buttonVariants>
+  VariantProps<typeof buttonVariants> & {
+    loading?:boolean;
+  }
 
 
 
-function Button_cva({children}:ButtonProps) {
+function Button_cva({children, intent, size, className, loading, block, ...rest}:ButtonProps) {
+  
   return (
     <button 
       type="button"
-      
+      disabled={loading || rest.disabled}
+      className={
+        tw(
+          buttonVariants({intent,size,block}),
+          className,
+          loading ? 'bg-amber-500' : 'bg-pink-500'
+        )
+      }
+      {...rest}
     >
       {children}
     </button>

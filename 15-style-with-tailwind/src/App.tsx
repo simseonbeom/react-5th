@@ -43,9 +43,16 @@ function App() {
 
       <hr className='my-5'/>
 
-      <Button_cva intent="primary" className=''>Call To Action</Button_cva>
+      <Button_cva intent='secondary' block size="lg" disabled className='bg-indigo-500' loading={true}>Call To Action</Button_cva>
 
-     
+      <hr className='my-5'/>
+
+      <Button_cva intent='primary' block size="lg" className='text-6xl' loading={true}>Call To Action</Button_cva>
+
+      <hr className='my-5'/>
+
+      <Button_cva>Call To Action</Button_cva>
+
     </div>
   )
 }
