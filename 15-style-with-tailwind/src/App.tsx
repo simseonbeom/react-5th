@@ -4,6 +4,7 @@ import Button_clsx from './components/Button_clsx'
 import Button_cva from './components/Button_cva'
 import Button_tw from './components/Button_tw'
 import Button_twMerge from './components/Button_twMerge'
+import Card from './components/Card'
 import ChatCard from './components/ChatCard'
 import Profile from './components/Profile'
 import ProfileCard from './components/ProfileCard'
@@ -52,6 +53,32 @@ function App() {
       <hr className='my-5'/>
 
       <Button_cva>Call To Action</Button_cva>
+
+
+      <Card
+        type="primary"
+        logoSrc="/facebook.svg"
+        rate="$120/hr"
+        title="Senior UI Developer"
+        company="Facebook"
+      />
+
+      {/* <Card
+        type="secondary"
+        logoSrc="/google.svg"
+        rate="$260/hr"
+        title="Senior Data Engineer"
+        company="Google"
+      />
+
+      <Card
+        type="tertiary"
+        logoSrc="/airbnb.svg"
+        rate="$80/hr"
+        title="Senior UX Designer"
+        company="Airbnb"
+      /> */}
+
 
     </div>
   )
