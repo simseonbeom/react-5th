@@ -97,6 +97,17 @@ utilities - Tailwind V4의 기능 - 단일 목적의 유틸리티를 정의하�
 
 
 
+/* 
+.container:hover .box{
+  transform: translateX(100px);
+}
+
+.box{
+  transition:all 1s;
+  
+}
+ */
+
 
 
 
