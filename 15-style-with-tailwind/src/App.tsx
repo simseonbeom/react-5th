@@ -1,5 +1,7 @@
 
-import Playground from './components/Playground'
+// import Playground from './components/Playground'
+import ChatCard from './components/ChatCard'
+import ProfileCard from './components/ProfileCard'
 import '/src/styles/style.css'
 
 
@@ -9,7 +11,14 @@ function App() {
     <div>
       <h1 className='flex justify-center items-center bg-indigo-500 text-white px-4 py-2 text-shadow-lg'>hello tailwind</h1>
       
-      <Playground />
+      <hr className='my-5'/>
+      {/* <Playground /> */}
+
+      <ChatCard />
+      <hr className='my-5'/>
+      <ProfileCard />
+
+
     </div>
   )
 }

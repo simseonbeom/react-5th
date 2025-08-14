@@ -19,10 +19,10 @@ theme 디자인 시스템 (디자인 토큰)
 
 @theme{
   --color-mint-500: oklch(0.72 0.11 178);
-  --breakpoint-sm: 500px;
+  /* --breakpoint-sm: 500px;
   --spacing-sm: 1rem;
   --spacing-m: 2rem;
-  --spacing-l: 3rem;
+  --spacing-l: 3rem; */
 }
 
 
@@ -52,17 +52,56 @@ base에서 정의한 값은 utilities 값보다 약하므로 덮어쓰기 됨.
 }
 
 
-
 /* 
 utilities - Tailwind V4의 기능 - 단일 목적의 유틸리티를 정의하는 문법
+재사용이 많이 될 것 같은 단일 css 속성을 정의 
 */
 
+/* 클래스 명 설정 */
+@utility highlight{
+  background-color: red;
+  font-size: 2rem;
+  color: white;
+  padding:1rem;
+}
 
-/* @utility asdasd{
 
-} */
+/* 
+  여러 속성을 묶는 재사용 컴포넌트 클래스 정의 
+*/
+
+/* pure css style  */
+@layer components{
+
+  .card{
+    color: orange;
+    background-color: dodgerblue;
+
+    h2{
+      font-size: 2rem;
+    }
+  }
+}
+
+
+/* Tailwind스럽게 조합 */
+@layer components{
+  ._card{
+    @apply rounded-xl bg-mint-500 text-white;
+    h2{
+      @apply text-xl font-semibold;
+    }
+  }
+}
 
 
 
 
 
+
+
+
+
+body{
+  background-color: #272746;
+}
