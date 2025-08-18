@@ -1,5 +1,5 @@
 import type { AppRoute } from "@/@types/global";
-import About from "@/pages/About";
+// import About from "@/pages/About";
 import Home from "@/pages/Home";
 import Root from "@/Root";
 import { configRoutes } from "@/utils/configRoutes";
@@ -13,7 +13,7 @@ const navigation:AppRoute[] = [
   {
     text:'홈',
     path:'',
-    // display:true,
+    // display:false,
     Component: Home,
   },
   {
