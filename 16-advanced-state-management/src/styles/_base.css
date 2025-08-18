@@ -3,7 +3,7 @@
 @layer base {
 
   html{
-    min-block-size: 100.1vh;
+    min-block-size: 99vh;
   }
   
   [hidden]{

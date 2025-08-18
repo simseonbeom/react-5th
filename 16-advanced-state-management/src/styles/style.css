@@ -12,7 +12,7 @@
 @import 'tailwindcss/utilities.css' layer(utilities);
 @import './_utilities.css';
 
-
+@import './_pages.css';
 
 
 
