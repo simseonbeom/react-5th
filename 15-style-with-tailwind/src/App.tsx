@@ -12,6 +12,7 @@ import '/src/styles/style.css'
 
 
 
+
 function App() {
   return (
     <div>
@@ -53,7 +54,6 @@ function App() {
       <hr className='my-5'/>
 
       <Button_cva>Call To Action</Button_cva>
-
 
       <Card
         type="primary"
