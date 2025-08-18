@@ -1,7 +1,9 @@
 import type { AppRoute } from "@/@types/global";
+import About from "@/pages/About";
 import Home from "@/pages/Home";
 import Root from "@/Root";
 import { configRoutes } from "@/utils/configRoutes";
+import { getNavigationItems } from "@/utils/getNavigationItems";
 import { createBrowserRouter } from "react-router";
 
 
@@ -13,6 +15,20 @@ const navigation:AppRoute[] = [
     path:'',
     // display:true,
     Component: Home,
+  },
+  {
+    text:'어바웃',
+    path:'about',
+    HydrateFallback: () => <p>loading..</p>,
+    lazy: async () => {
+      const mod = await import('@/pages/About');
+      
+      return {
+        Component: mod.default,
+        // loader:mod.loader,
+        // action:''
+      }
+    }
   }
 ]
 
@@ -35,6 +51,9 @@ const router =  createBrowserRouter(routes,{
 export default router;
 
 
+
+
+export const navigationItems = getNavigationItems(navigation);
 
 
 

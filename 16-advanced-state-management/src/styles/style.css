@@ -10,7 +10,7 @@
 @import './_base.css';
 
 @import 'tailwindcss/utilities.css' layer(utilities);
-@import './utilities.css';
+@import './_utilities.css';
 
 
 
