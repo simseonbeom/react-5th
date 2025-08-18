@@ -1,10 +1,8 @@
 
-
 function Home() {
   return (
-    <main>
-        main
-    </main>        
+    <h1>Home</h1>
   )
 }
+
 export default Home
