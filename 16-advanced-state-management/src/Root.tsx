@@ -1,12 +1,13 @@
 import { Outlet } from "react-router"
+import Header from "./components/Header"
 
 function Root() {
   return (
-    <div>
+    <div className="h-screen bg-indigo-50/30 flex flex-col">
       
-      <header>HEADER</header>
+      <Header />
 
-      <main>
+      <main className="flex-1 m-4">
         <Outlet></Outlet>
       </main>
 

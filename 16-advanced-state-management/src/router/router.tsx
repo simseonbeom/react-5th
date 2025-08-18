@@ -11,12 +11,13 @@ const navigation:AppRoute[] = [
   {
     text:'홈',
     path:'',
-    display:true,
-    Component: Home
+    // display:true,
+    Component: Home,
   }
 ]
 
 
+// 타입 안정성을 위해 configRoutes 구성
 export const routes = [
   {
     path:'/',
