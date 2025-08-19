@@ -1,5 +1,6 @@
 import AppLink from "@/components/AppLink"
 import Divider from "@/components/Divider"
+import Counter from "@/miniApp/Counter"
 import Counter_ from "@/miniApp/Counter/index_"
 // import { Helmet } from "react-helmet"
 import { Helmet } from "@dr.pogodin/react-helmet"
@@ -77,11 +78,18 @@ function Home() {
 
           <Divider />
           
-          <h2>Counter</h2>
+          <h2 lang="en" className="uppercase">Counter</h2>
           <p>간단한 카운터 앱의 상태를 CustomHook을 사용해 관리합니다.</p>
 
           <Counter_/>
 
+          <Divider />
+
+          <h2 lang="en" className="uppercase">Counter</h2>
+          <p>간단한 카운터 앱의 상태를 Zustand를 사용해 관리합니다.</p>
+
+          <Counter />
+          
         </div>
       </section>
     </>

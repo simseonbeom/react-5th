@@ -3,7 +3,7 @@
 import { memo } from 'react';
 import S from './style.module.css';
 
-function CountButton_({children, onUpdate, ...restProps}:React.ButtonHTMLAttributes<HTMLButtonElement> & {
+function CountButton({children, onUpdate, ...restProps}:React.ButtonHTMLAttributes<HTMLButtonElement> & {
   onUpdate: () => void;
 }) {
   return (
@@ -17,4 +17,4 @@ function CountButton_({children, onUpdate, ...restProps}:React.ButtonHTMLAttribu
     </button>
   )
 }
-export default memo(CountButton_)
+export default memo(CountButton)
