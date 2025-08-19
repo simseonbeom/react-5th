@@ -38,5 +38,20 @@ tailwind의 변수는 런타임에 브라우저가 해석함 그래서 .module.c
 }
 
 
+.component .group{
+  @apply inline-flex items-center;
+  flex-flow:column; /* flex-col */
+}
+
+
+.component .button{
+  @apply select-none text-[#999] text-xs bg-transparent opacity-75 p-0 border-0;
+  block-size:14px;
+  inline-size:14px;
+}
+
+.component .button:hover:not(:disabled){
+  @apply opacity-100 bg-[#ededed] text-accent;
+}
 
 
