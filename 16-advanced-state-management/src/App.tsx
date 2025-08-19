@@ -2,7 +2,7 @@
 
 import { RouterProvider } from 'react-router';
 import router from './router/router';
-import { HelmetProvider } from 'react-helmet-async'
+import { HelmetProvider } from '@dr.pogodin/react-helmet'
 
 // react-router - Data mode
 function App() {
