@@ -1,9 +1,12 @@
 import AppLink from "@/components/AppLink"
 import Divider from "@/components/Divider"
 import Counter from "@/miniApp/Counter"
+import CounterReducer from "@/miniApp/Counter/usingCounterReducer"
+import { useCountStore } from "@/miniApp/Counter/@store"
 import Counter_ from "@/miniApp/Counter/index_"
 // import { Helmet } from "react-helmet"
 import { Helmet } from "@dr.pogodin/react-helmet"
+import { useShallow } from "zustand/shallow"
 
 
 
@@ -59,6 +62,8 @@ const helmetTag = (
 function Home() {
 
 
+  const [reset, setStep] = useCountStore(useShallow((s)=> [s.reset, s.setStep]))
+
   
   return (
     <>
@@ -88,8 +93,22 @@ function Home() {
           <h2 lang="en" className="uppercase">Counter</h2>
           <p>간단한 카운터 앱의 상태를 Zustand를 사용해 관리합니다.</p>
 
-          <Counter />
+          <Counter className="mb-3" />
+
+          {/* reset */}
+          <button type="button" onClick={reset} className="mb-3 px-3 py-1 border border-accent rounded">reset</button>
+
+          {/* setStep */}
+          <input type="number" onChange={(e)=> setStep(+e.target.value)} className="border border-accent px-2 py-1" placeholder="step값을 입력해주세요"/>
           
+          <Divider />
+
+          <h2 lang="en" className="uppercase">Counter</h2>
+          <p>간단한 카운터 앱의 상태를 리듀서를 사용해 관리합니다.</p>
+
+          <CounterReducer/>
+
+
         </div>
       </section>
     </>
