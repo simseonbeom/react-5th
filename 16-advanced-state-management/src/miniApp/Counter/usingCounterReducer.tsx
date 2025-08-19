@@ -28,20 +28,28 @@ function reducer (state:State, action:Action) {
   }
 }
 
+// function useReducer (reducer, initValue) {
+//   const [state,setState] = useState(
+//     // initValue ? ...CounterReducer.
+//   )
+// }
+
 function CounterReducer() {
 
   // reducer = dispatch
   const [state, dispatch] = useReducer(reducer,INITIAL);
 
+  const setTo = 100;
+  
   return (
     <div className="text-center text-accent">
-      <p>count: 0</p>
-      <button type="button" className="px-2 py-1 border border-accent m-1 rounded">-</button>
-      <button type="button" className="px-2 py-1 border border-accent m-1 rounded">+</button>
+      <p>count: {state.count}</p>
+      <button type="button" onClick={()=> dispatch({type: 'decrement'})} className="px-2 py-1 border border-accent m-1 rounded">-</button>
+      <button type="button" onClick={()=> dispatch({type: 'increment'})} className="px-2 py-1 border border-accent m-1 rounded">+</button>
       <hr />
-      <button type="button" className="px-2 py-1 border border-accent m-1 rounded">10으로 변경</button>
+      <button type="button" onClick={()=> dispatch({type:'set', payload: setTo})} className="px-2 py-1 border border-accent m-1 rounded">{setTo} 으로 변경</button>
       <hr />
-      <button type="button" className="px-2 py-1 border border-accent m-1 rounded">리셋</button>
+      <button type="button" onClick={()=> dispatch({type:'reset'})} className="px-2 py-1 border border-accent m-1 rounded">리셋</button>
     </div>
   )
 }
