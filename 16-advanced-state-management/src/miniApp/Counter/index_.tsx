@@ -1,7 +1,7 @@
 
 import tw from '@/utils/tw'
 import S from './style.module.css'
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import { GrFormDown, GrFormUp } from 'react-icons/gr'
 import CountDisplay_ from './CountDisplay_'
 import CountButton_ from './CountButton_'
@@ -13,7 +13,7 @@ function Counter_({className}:{className?:string}) {
 
   const C = useCounter();
 
-  const { count, step, isMaxDisabled, isMinDisabled, increment, decrement ,reset } = C;
+  const { count, step, isMaxDisabled, isMinDisabled, increment, decrement } = C;
 
 
   const incrementLabel = `${step} 증가`;
@@ -22,22 +22,24 @@ function Counter_({className}:{className?:string}) {
 
   return (
     <div className={tw(S.component,className)}>
-      <CountDisplay_ />
+      <CountDisplay_ count={count} />
       <div role='group' className={S.group}>
           <CountButton_
             title={incrementLabel}
             aria-label={incrementLabel}
-            disabled={false}
+            disabled={isMaxDisabled}
+            onUpdate={increment}
           >
-            <GrFormUp/>
+            { useMemo(() => <GrFormUp/>, []) }
           </CountButton_>  
 
           <CountButton_
             title={decrementLabel}
             aria-label={decrementLabel}
-            disabled={false}
+            disabled={isMinDisabled}
+            onUpdate={decrement}
           >
-            <GrFormDown/>
+            { useMemo(() => <GrFormDown/>, []) }
           </CountButton_>  
       </div>
     </div>

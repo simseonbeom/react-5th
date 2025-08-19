@@ -18,6 +18,7 @@ noreferrer
 
 
 import tw from "@/utils/tw";
+import { memo } from "react";
 
 interface Props {
   children: React.ReactNode;
@@ -31,6 +32,7 @@ function AppLink({children, href, isExternal, className, ...restProps}:Props) {
 
   const externalProps = isExternal ? { target:'_blank', rel:'noreferrer noopener'} : {};
 
+    
   return (
       <a
       href={href}
@@ -42,4 +44,4 @@ function AppLink({children, href, isExternal, className, ...restProps}:Props) {
     </a>
   )
 }
-export default AppLink
+export default memo(AppLink, ()=> true)
