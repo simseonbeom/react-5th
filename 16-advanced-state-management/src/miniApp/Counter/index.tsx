@@ -6,19 +6,31 @@ import { GrFormDown, GrFormUp } from 'react-icons/gr'
 import CountDisplay from './CountDisplay'
 import CountButton from './CountButton'
 import { useCountStore } from './@store'
+import { useShallow } from 'zustand/shallow'
 
 
 
 function Counter({className}:{className?:string}) {
 
 
-  const { step } = useCountStore();
+  // zustand v4+
+  // const { step } = useCountStore();
+  // const [count, step] = useCountStore((s)=> [s.count, s.step],shallow)
 
+//  const reset = useCountStore((s) => s.reset);
 
-  // const step = 1;
+ 
+    // zustand v5+
+  const [count, step, min, max] = useCountStore(
+    useShallow((s)=> [s.count, s.step, s.min, s.max])
+  );
 
   const incrementLabel = `${step} 증가`;
   const decrementLabel = `${step} 감소`;
+
+  const isMinDisabled = count <= min;
+  const isMaxDisabled = count >= max;
+
 
   return (
     <div className={tw(S.component,className)}>
@@ -27,15 +39,16 @@ function Counter({className}:{className?:string}) {
           <CountButton
             title={incrementLabel}
             aria-label={incrementLabel}
-            disabled={false}
+            disabled={isMaxDisabled}
           >
             { useMemo(() => <GrFormUp/>, []) }
           </CountButton>  
 
           <CountButton
+            type="-"
             title={decrementLabel}
             aria-label={decrementLabel}
-            disabled={false}
+            disabled={isMinDisabled}
           >
             { useMemo(() => <GrFormDown/>, []) }
           </CountButton>  
