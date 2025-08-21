@@ -55,7 +55,9 @@ export function TaskProvider(props: React.PropsWithChildren){
 
 
   return (
-    <TaskContext.Provider value={{ pinnedTaskList, unpinnedTaskList, methods: taskMethods}} {...props}/>
+    <TaskContext.Provider value={
+      { pinnedTaskList, unpinnedTaskList, methods: taskMethods}
+    } {...props}/>
   )
 }
 

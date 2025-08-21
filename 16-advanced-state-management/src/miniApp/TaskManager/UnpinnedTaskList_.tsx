@@ -6,55 +6,51 @@ import { useTask } from "./@context";
 
 function UnpinnedTaskList_() {
 
-
   // const {handleDeleteTask} = uesTask()
   // const [tasks,dispatch] = useReducer(reducer,INITIAL_TASK)
 
-  const data = useTask()
-
-  console.log( data );
-  
+  const {
+    unpinnedTaskList,
+    methods: { setTask, togglePin, deleteTask }
+  } = useTask()
 
   // const isCompleted = false;
   // const isPin = false;
 
-  const handleSetTask = () => {
-    // 누구를 ? 토글 값은 뭘로 바꿀건데?
-    // dispatch({type:ACTION_TYPES.TOGGLE_PIN,payload:{taskId, checked}})
-  }
+  const handleSetTask = (taskId:string, isCompleted:boolean) => setTask(taskId, isCompleted)
 
-  const handleTogglePin = () => {
+  const handleTogglePin = (taskId:string) => togglePin(taskId)
 
-  }
-
-  const handleDeleteTask = () => {
-  }
+  const handleDeleteTask = (taskId:string) => deleteTask(taskId)
 
   /* 
   리스트 렌더링, 이벤트 바인딩 
   */
   return (
     <ul className="flex flex-col gap-6">
-
-      <li className="flex justify-between gap-1.5">
-        <label className={tw("flex gap-1",isCompleted && 'line-through')}>
-          <input 
-            type="checkbox" 
-            // onClick={()=> handleSetTask(taskId, target.checked)}
-          />
-          Zustand 배우기
-        </label>
-        <div className="flex gap-2">
-          <button type="button">
-            { isPin ? <PiPushPinFill/> : <PiPushPinLight/> }
-          </button>
-          <button type="button" 
-            // onClick={()=> handleDeleteTask(task.id)}
-          >
-            <RxCross1/>
-          </button>
-        </div>
-      </li>
+      {
+        unpinnedTaskList.map((task)=>(
+          <li key={task.id} className="flex justify-between gap-1.5">
+            <label className={tw("flex gap-1",task.isCompleted && 'line-through')}>
+              <input 
+                type="checkbox" 
+                onChange={(e)=> handleSetTask(task.id, e.target.checked)}
+              />
+              { task.content }
+            </label>
+            <div className="flex gap-2">
+              <button type="button" onClick={() => handleTogglePin(task.id)}>
+                { task.isPin ? <PiPushPinFill/> : <PiPushPinLight/> }
+              </button>
+              <button type="button" 
+                onClick={()=> handleDeleteTask(task.id)}
+              >
+                <RxCross1/>
+              </button>
+            </div>
+          </li>
+        ))
+      }
     </ul>
   )
 }
