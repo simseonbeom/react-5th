@@ -1,5 +1,25 @@
 
 
+/* 
+action creator 
+
+redux 오래된 전통적인 패턴
+
+자동완성/타입추론/유지보수 
+
+action creator + reducer + context(methods 래핑)
+
+
+RTK (Redux ToolKit) => createSlice({
+  name:'tasks',
+  reducers: {
+    addTask: {...}
+    deleteTask: {...}
+  }
+
+})
+ 
+*/
 
 
 export type Task = {
@@ -21,6 +41,57 @@ const ACTION_TYPES = {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 type ActionType = typeof ACTION_TYPES[keyof typeof ACTION_TYPES];
+
+
+export type AddTaskAction = {
+  type: typeof ACTION_TYPES.ADD_TASK;
+  payload: string // nextStep
+}
+
+export const addTask = (nextStep:string): AddTaskAction => ({
+  type: ACTION_TYPES.ADD_TASK,
+  payload:nextStep
+})
+
+// -----------------------------------------------------------------
+
+export type DeleteTaskAction = {
+  type: typeof ACTION_TYPES.DELETE_TASK;
+  payload: string // nextStep
+}
+
+export const deleteTask = (deleteId:string): DeleteTaskAction => ({
+  type: ACTION_TYPES.DELETE_TASK,
+  payload:deleteId
+})
+
+// -----------------------------------------------------------------
+
+
+export type TogglePinAction = {
+  type: typeof ACTION_TYPES.TOGGLE_PIN;
+  payload: string // taskId
+}
+
+export const togglePin = (taskId:string): TogglePinAction => ({
+  type: ACTION_TYPES.TOGGLE_PIN,
+  payload: taskId
+})
+
+// -----------------------------------------------------------------
+
+export type SetTaskAction = {
+  type: typeof ACTION_TYPES.SET_TASK;
+  payload: { taskId:string; isCompleted: boolean }
+}
+
+export const setTask = (taskId:string, isCompleted:boolean):SetTaskAction => ({
+  type: ACTION_TYPES.SET_TASK,
+  payload: { taskId, isCompleted },
+});
+
+
+
 
 
 // 데이터 fetch 

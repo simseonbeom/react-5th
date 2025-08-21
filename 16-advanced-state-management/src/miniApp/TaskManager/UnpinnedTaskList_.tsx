@@ -1,7 +1,7 @@
 import tw from "@/utils/tw";
-import { useReducer } from "react";
 import { PiPushPinFill, PiPushPinLight } from 'react-icons/pi';
 import { RxCross1 } from 'react-icons/rx';
+import { useTask } from "./@context";
 
 
 function UnpinnedTaskList_() {
@@ -10,10 +10,13 @@ function UnpinnedTaskList_() {
   // const {handleDeleteTask} = uesTask()
   // const [tasks,dispatch] = useReducer(reducer,INITIAL_TASK)
 
-  // const {setTask, togglePin, tasks, deleteTask} = useTask()
+  const data = useTask()
 
-  const isCompleted = false;
-  const isPin = false;
+  console.log( data );
+  
+
+  // const isCompleted = false;
+  // const isPin = false;
 
   const handleSetTask = () => {
     // 누구를 ? 토글 값은 뭘로 바꿀건데?
@@ -27,6 +30,9 @@ function UnpinnedTaskList_() {
   const handleDeleteTask = () => {
   }
 
+  /* 
+  리스트 렌더링, 이벤트 바인딩 
+  */
   return (
     <ul className="flex flex-col gap-6">
 
