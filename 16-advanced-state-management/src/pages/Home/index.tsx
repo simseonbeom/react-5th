@@ -8,6 +8,8 @@ import Counter_ from "@/miniApp/Counter/index_"
 import { Helmet } from "@dr.pogodin/react-helmet"
 import { useShallow } from "zustand/shallow"
 import Switcher from "@/miniApp/Switcher/Switch"
+import { useState } from "react"
+import TaskManager_ from "@/miniApp/TaskManager/TaskManager_"
 
 
 
@@ -64,7 +66,7 @@ function Home() {
 
 
   const [reset, setStep] = useCountStore(useShallow((s)=> [s.reset, s.setStep]))
-
+  const [dark, setDark] = useState(false);
   
   return (
     <>
@@ -88,6 +90,7 @@ function Home() {
           <p>간단한 카운터 앱의 상태를 CustomHook을 사용해 관리합니다.</p>
 
           <Counter_/>
+
 
           <Divider />
 
@@ -114,10 +117,15 @@ function Home() {
           <h2 lang="en" className="uppercase">Switcher</h2>
           <p>Switch의 상태를 CustomHook or 리듀서를 사용해 관리합니다.</p>
           
-          <Switcher size="lg" />
-
+          <Switcher size="lg" checked={dark} onChange={setDark} />
+          <p className="uppercase">{dark ? 'dark' : 'light'}</p>
 
           <Divider />
+
+          <h2 lang="en" className="uppercase">Task Manager</h2>
+          <p>태스크 매니저 앱의 상태를 컨텍스트 + 리듀서를 사용해 관리합니다.</p>
+
+          <TaskManager_/>
 
           <Divider />
 
