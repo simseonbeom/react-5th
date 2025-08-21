@@ -2,7 +2,6 @@
 
 
 
-
 export type Task = {
   id: string;
   content: string;
@@ -13,7 +12,7 @@ export type Task = {
 export type State = Task[];
 
 
-export const ACTION_TYPES = {
+const ACTION_TYPES = {
   ADD_TASK: '태스크 추가',
   SET_TASK: '태스크 토글',
   TOGGLE_PIN: '핀 토글',
@@ -41,10 +40,15 @@ export const INITIAL_TASK:Task[] = [
 ]
 
 
+type Action = 
+  | { type: typeof ACTION_TYPES.ADD_TASK; payload: string }
+  | { type: typeof ACTION_TYPES.DELETE_TASK; payload: string } // task id
+  | { type: typeof ACTION_TYPES.TOGGLE_PIN; payload: string } // task id
+  | { type: typeof ACTION_TYPES.SET_TASK; payload: { taskId:string, isCompleted:boolean } } // { taskId, isCompleted }
 
 
 
-export default function reducer(state:State, action):State{
+export default function reducer(state:State, action:Action):State{
 
 
   switch (action.type) {
