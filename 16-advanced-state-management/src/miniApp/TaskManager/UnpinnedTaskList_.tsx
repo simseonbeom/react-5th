@@ -2,12 +2,12 @@ import tw from "@/utils/tw";
 import { useReducer } from "react";
 import { PiPushPinFill, PiPushPinLight } from 'react-icons/pi';
 import { RxCross1 } from 'react-icons/rx';
-import reducer, { ACTION_TYPES, INITIAL_TASK } from "./@reducer";
 
 
 function UnpinnedTaskList_() {
 
 
+  // const {handleDeleteTask} = uesTask()
   // const [tasks,dispatch] = useReducer(reducer,INITIAL_TASK)
 
   // const {setTask, togglePin, tasks, deleteTask} = useTask()
@@ -18,7 +18,6 @@ function UnpinnedTaskList_() {
   const handleSetTask = () => {
     // 누구를 ? 토글 값은 뭘로 바꿀건데?
     // dispatch({type:ACTION_TYPES.TOGGLE_PIN,payload:{taskId, checked}})
-    // setTask(taskId,checked)
   }
 
   const handleTogglePin = () => {
@@ -26,7 +25,6 @@ function UnpinnedTaskList_() {
   }
 
   const handleDeleteTask = () => {
-
   }
 
   return (
@@ -36,7 +34,7 @@ function UnpinnedTaskList_() {
         <label className={tw("flex gap-1",isCompleted && 'line-through')}>
           <input 
             type="checkbox" 
-            onClick={()=> handleSetTask(taskId, target.checked)}
+            // onClick={()=> handleSetTask(taskId, target.checked)}
           />
           Zustand 배우기
         </label>
@@ -44,7 +42,9 @@ function UnpinnedTaskList_() {
           <button type="button">
             { isPin ? <PiPushPinFill/> : <PiPushPinLight/> }
           </button>
-          <button type="button">
+          <button type="button" 
+            // onClick={()=> handleDeleteTask(task.id)}
+          >
             <RxCross1/>
           </button>
         </div>

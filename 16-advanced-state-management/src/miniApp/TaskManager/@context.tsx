@@ -1,5 +1,6 @@
-import { createContext } from "react";
+import { createContext, useReducer } from "react";
 import type { Task } from "./@reducer";
+import reducer, { INITIAL_TASK } from "./@reducer";
 
 
 
@@ -21,21 +22,23 @@ TaskContext.displayName = 'TaskContext';
 
 export function TaskProvider(props: React.PropsWithChildren){
 
-    const [taskList,dispatch] = useReducer(taskReducer,INITIAL_TASK)
+    const [taskList,dispatch] = useReducer(reducer,INITIAL_TASK)
 
 
   // methods
-  // handleAddTask =>  dispatch()
+  const handleAddTask = (nextStep:string) => dispatch({type:'태스크 추가',payload:nextStep});
   // handleDeleteTask
+  const handleDeleteTask = (deleteId:string) => dispatch({type:'태스크 삭제',payload:deleteId});
   // handleTogglePin
   // handleSetTask
 
-  // pinnedTaskList
 
+  // 파생 상태 
+  // pinnedTaskList
   // unpinnedTaskList
 
   return (
-    <TaskContext.Provider value={{ pinnedTaskList, unpinnedTaskList}}>
+    <TaskContext.Provider value={{ pinnedTaskList, unpinnedTaskList, deleteTask}}>
       {...props}
     </TaskContext.Provider>
   )
