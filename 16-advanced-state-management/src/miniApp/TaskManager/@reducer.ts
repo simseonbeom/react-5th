@@ -112,10 +112,10 @@ export const INITIAL_TASK:Task[] = [
 
 
 type Action = 
-  | { type: typeof ACTION_TYPES.ADD_TASK; payload: string }
-  | { type: typeof ACTION_TYPES.DELETE_TASK; payload: string } // task id
-  | { type: typeof ACTION_TYPES.TOGGLE_PIN; payload: string } // task id
-  | { type: typeof ACTION_TYPES.SET_TASK; payload: { taskId:string, isCompleted:boolean } } // { taskId, isCompleted }
+  | AddTaskAction
+  | DeleteTaskAction // task id
+  | TogglePinAction // task id
+  | SetTaskAction // { taskId, isCompleted }
 
 
 

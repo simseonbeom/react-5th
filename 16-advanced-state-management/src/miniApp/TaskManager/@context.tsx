@@ -24,7 +24,6 @@ export function TaskProvider(props: React.PropsWithChildren){
 
   const [taskList,dispatch] = useReducer(reducer,INITIAL_TASK)
 
-
   const taskMethods = useMemo<TaskMethods>(() => {
       // methods
     const handleAddTask = (nextStep:string) => dispatch(addTask(nextStep));

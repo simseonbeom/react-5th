@@ -29,7 +29,18 @@ const navigation:AppRoute[] = [
         // action:''
       }
     }
-  }
+  },
+   {
+    text: '칸반보드',
+    path: '/kanbanboard',
+    HydrateFallback: () => <p>loading...</p>,
+    lazy: async () => {
+      const mod = await import('@/pages/KanbanBoard')
+      return{
+        Component: mod.default
+      }
+    }
+  },
 ]
 
 

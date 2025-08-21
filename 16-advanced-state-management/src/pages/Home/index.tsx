@@ -10,6 +10,7 @@ import { useShallow } from "zustand/shallow"
 import Switcher from "@/miniApp/Switcher/Switch"
 import { useState } from "react"
 import TaskManager_ from "@/miniApp/TaskManager/TaskManager_"
+import TaskManager from "@/miniApp/TaskManager/TaskManager"
 
 
 
@@ -125,9 +126,14 @@ function Home() {
           <h2 lang="en" className="uppercase">Task Manager</h2>
           <p>태스크 매니저 앱의 상태를 컨텍스트 + 리듀서를 사용해 관리합니다.</p>
 
-          <TaskManager_/>
+          <TaskManager_ className="text-emerald-600"/>
 
           <Divider />
+
+          <h2 lang="en" className="uppercase">Task Manager</h2>
+          <p>태스크 매니저 앱의 상태를 Zustand를 사용해 관리합니다.</p>
+
+          <TaskManager className="text-indigo-500"/>
 
           <Divider />
 
